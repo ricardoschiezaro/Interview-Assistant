@@ -15,3 +15,11 @@ __pycache__/
 # Logs and scratchpad files
 *.log
 scratch/
+
+# Personal data — CV, job descriptions, session transcripts
+# These contain private information and should NEVER be committed
+profile.json
+sessions/
+
+# Implementation notes (local only)
+implementation_plan.txt

@@ -1,5 +1,10 @@
 import sys
-sys.path.insert(0, r'C:\pylibs')
+import os
+# Optional: inject C:\pylibs only if present (Windows Long Path workaround)
+_LIBS = r"C:\pylibs"
+if os.path.isdir(_LIBS) and _LIBS not in sys.path:
+    sys.path.insert(0, _LIBS)
+
 
 from dotenv import load_dotenv
 load_dotenv('.env')

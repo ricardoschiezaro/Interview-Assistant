@@ -161,7 +161,7 @@ class Responder:
         headers = {
             "Authorization": f"Bearer {OPENROUTER_API_KEY}",
             "HTTP-Referer": "https://github.com/humberto/interview-assistant",
-            "X-Title": "Interview Copilot",
+            "X-Title": "Interview Assistant",
             "Content-Type": "application/json"
         }
         

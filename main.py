@@ -2,8 +2,9 @@ import sys
 import os
 
 # Add the short-path site-packages dir (workaround for Windows Long Path restriction)
+# Only inject if the directory actually exists on this machine
 _LIBS = r"C:\pylibs"
-if _LIBS not in sys.path:
+if os.path.isdir(_LIBS) and _LIBS not in sys.path:
     sys.path.insert(0, _LIBS)
 
 import asyncio
@@ -25,8 +26,8 @@ from core.event_loop import setup_asyncio_event_loop
 def main():
     """Application entry point."""
     app = QApplication(sys.argv)
-    app.setApplicationName("Interview Copilot")
-    app.setOrganizationName("Copilot")
+    app.setApplicationName("Interview Assistant")
+    app.setOrganizationName("Interview Assistant")
 
     # Setup asyncio integration with Qt
     loop = setup_asyncio_event_loop(app)
