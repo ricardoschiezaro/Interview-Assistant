@@ -1,6 +1,6 @@
 # ✦ Interview Copilot ✦
 
-O **Interview Copilot** é um assistente virtual inteligente e silencioso de código aberto desenvolvido para ajudar Engenheiros de Nuvem e Arquitetos de Soluções durante entrevistas técnicas em tempo real. 
+O **Interview Copilot** é um assistente virtual inteligente e silencioso de código aberto desenvolvido para auxiliar candidatos de qualquer área profissional durante entrevistas de emprego em tempo real. 
 
 Ele roda localmente em uma janela translúcida com estilo *glassmorphism* (sem bordas e sempre no topo), captura o áudio do entrevistador e do candidato, transcreve a conversa em tempo real e fornece sugestões de fala personalizadas baseadas no currículo (CV) do candidato e na descrição da vaga (Job Description).
 
@@ -8,7 +8,7 @@ Ele roda localmente em uma janela translúcida com estilo *glassmorphism* (sem b
 
 ## 🎯 Objetivo do Projeto
 
-Durante entrevistas de arquitetura ou engenharia sênior, é comum ter que lembrar rapidamente de detalhes técnicos de dezenas de ferramentas (Terraform, Entra ID, CAF, WAF, etc.) ou estruturar respostas comportamentais em segundos. 
+Durante processos seletivos e entrevistas profissionais, é comum ter que lembrar rapidamente de detalhes de projetos anteriores, conceitos teóricos ou estruturar respostas estruturadas e comportamentais em segundos. 
 
 O objetivo do **Interview Copilot** é atuar como uma "segunda mente" em tempo real:
 - **Transcrever o áudio** da conversa instantaneamente (tanto do microfone quanto do áudio do computador vindo do Teams, Zoom, Google Meet, etc.).
@@ -24,11 +24,11 @@ O objetivo do **Interview Copilot** é atuar como uma "segunda mente" em tempo r
    - **Sistema (Desktop Audio)**: Captura a voz do entrevistador vinda de qualquer plataforma (Teams, Zoom, Meet, Slack, Discord).
    - **Modo Híbrido**: Captura ambos simultaneamente.
 2. **Transcrição Instantânea (STT)**: Utiliza a API ultrarrápida do **Deepgram** para transcrever o áudio com latência inferior a 1 segundo.
-3. **Mecanismo de Correção Automática (Sanitizer)**: Limpa os erros de transcrição de termos técnicos (ex: corrige "terra form" para "Terraform") usando IA rápida.
+3. **Mecanismo de Correção Automática (Sanitizer)**: Limpa os erros de transcrição e formata jargões específicos e termos de sua área de atuação usando IA rápida.
 4. **Respostas sob Medida com Multi-LLM**:
    - Integração com **Groq**, **Cerebras**, **Gemini**, **OpenRouter** e **Cloudflare Workers AI**.
    - Mecanismo de **Failover Automático**: Se o provedor principal demorar mais de `0.8s`, o sistema consulta outro provedor imediatamente para garantir resposta instantânea.
-5. **Contextualização com seu Perfil**: Injeta dinamicamente seu histórico profissional (ex: Kumon Brasil, Accenture, projetos de Hub-Spoke, CAF, landing zones) e a descrição da vaga nas respostas da IA.
+5. **Contextualização com seu Perfil**: Injeta dinamicamente seu histórico profissional (currículo/CV, realizações importantes, competências essenciais) e a descrição da vaga de interesse nas respostas da IA.
 6. **Interface Gráfica Premium**:
    - Janela sem bordas (*frameless*) e translúcida.
    - Sempre visível no topo (*always-on-top*).
