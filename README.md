@@ -4,6 +4,9 @@ O **Interview Copilot** é um assistente virtual inteligente e silencioso de có
 
 Ele roda localmente em uma janela translúcida com estilo *glassmorphism* (sem bordas e sempre no topo), captura o áudio do entrevistador e do candidato, transcreve a conversa em tempo real e fornece sugestões de fala personalizadas baseadas no currículo (CV) do candidato e na descrição da vaga (Job Description).
 
+> [!IMPORTANT]  
+> **Quer começar rapidamente e sem custos?** Consulte o nosso **[Guia Detalhado de APIs e Custos (API Guide)](API_GUIDE.md)** para aprender como criar suas contas e chaves de forma gratuita nas plataformas integradas (Deepgram, Groq, Cerebras, Gemini, Cloudflare, OpenRouter), entender o mecanismo de failover dinâmico e conferir um cenário real de uso.
+
 ---
 
 ## 🎯 Objetivo do Projeto
