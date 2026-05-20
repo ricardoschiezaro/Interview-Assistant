@@ -1,6 +1,6 @@
-# ✦ Interview Copilot ✦
+# ✦ Interview Assistant ✦
 
-O **Interview Copilot** é um assistente virtual inteligente e silencioso de código aberto desenvolvido para auxiliar candidatos de qualquer área profissional durante entrevistas de emprego em tempo real. 
+O **Interview Assistant** é um assistente virtual inteligente e silencioso de código aberto desenvolvido para auxiliar candidatos de qualquer área profissional durante entrevistas de emprego em tempo real. 
 
 Ele roda localmente em uma janela translúcida com estilo *glassmorphism* (sem bordas e sempre no topo), captura o áudio do entrevistador e do candidato, transcreve a conversa em tempo real e fornece sugestões de fala personalizadas baseadas no currículo (CV) do candidato e na descrição da vaga (Job Description).
 
@@ -10,7 +10,7 @@ Ele roda localmente em uma janela translúcida com estilo *glassmorphism* (sem b
 
 Durante processos seletivos e entrevistas profissionais, é comum ter que lembrar rapidamente de detalhes de projetos anteriores, conceitos teóricos ou estruturar respostas estruturadas e comportamentais em segundos. 
 
-O objetivo do **Interview Copilot** é atuar como uma "segunda mente" em tempo real:
+O objetivo do **Interview Assistant** é atuar como uma "segunda mente" em tempo real:
 - **Transcrever o áudio** da conversa instantaneamente (tanto do microfone quanto do áudio do computador vindo do Teams, Zoom, Google Meet, etc.).
 - **Gerar roteiros e tópicos de resposta personalizados** baseados em experiências reais do seu currículo.
 - **Manter a discrição**, rodando em uma janela com opacidade ajustável e design minimalista sem foco em tarefas do sistema.
@@ -121,7 +121,7 @@ O script testará a comunicação e latência com os provedores configurados.
 
 ## 🔑 Guia de APIs: Como Criar, Benefícios e Custos
 
-A maioria dos serviços integrados no **Interview Copilot** oferece camadas gratuitas extremamente generosas. Você pode usar o aplicativo para testes e dezenas de entrevistas reais **sem gastar absolutamente nada**.
+A maioria dos serviços integrados no **Interview Assistant** oferece camadas gratuitas extremamente generosas. Você pode usar o aplicativo para testes e dezenas de entrevistas reais **sem gastar absolutamente nada**.
 
 ### 🎙️ Deepgram — Transcrição de Áudio em Tempo Real (STT)
 
@@ -131,14 +131,14 @@ A maioria dos serviços integrados no **Interview Copilot** oferece camadas grat
 *   **Como criar a chave:**
     1. Acesse [console.deepgram.com](https://console.deepgram.com/) e crie uma conta gratuita.
     2. No menu esquerdo, vá em **API Keys** → **Create a New API Key**.
-    3. Dê um nome (ex: `InterviewCopilot`) e selecione permissão `Member`.
+    3. Dê um nome (ex: `Interview Assistant`) e selecione permissão `Member`.
     4. Copie a chave e cole em `DEEPGRAM_API_KEY` no seu `.env`.
 
 ---
 
 ### ⚡ Groq — LLM Ultrarrápido (Provedor Principal)
 
-*   **O que faz:** Gera as respostas do copiloto com latência de ~150–300ms usando hardware LPU dedicado.
+*   **O que faz:** Gera as respostas do assistente com latência de ~150–300ms usando hardware LPU dedicado.
 *   **Camada Gratuita:** **100% gratuita** no plano básico (com Rate Limits por minuto — suficiente para todas as entrevistas).
 *   **Custo pós-gratuito:** ~$0.59 por 1 milhão de tokens de entrada / ~$0.79 por 1 milhão de tokens de saída (centavos de dólar por entrevista).
 *   **Como criar a chave:**
@@ -212,7 +212,7 @@ A maioria dos serviços integrados no **Interview Copilot** oferece camadas grat
 
 ## 🔄 Como Funciona o Failover Automático de APIs
 
-O **Interview Copilot** garante que você **nunca** fique sem resposta durante uma entrevista, mesmo que uma API falhe ou fique lenta:
+O **Interview Assistant** garante que você **nunca** fique sem resposta durante uma entrevista, mesmo que uma API falhe ou fique lenta:
 
 1. **Tentativa Principal:** O sistema dispara a pergunta para o provedor principal (ex: Groq).
 2. **Timeout de 800ms:** Um cronômetro interno aguarda a resposta por no máximo **800 milissegundos**.
@@ -248,7 +248,7 @@ Para iniciar a aplicação:
    ```powershell
    .\run.bat
    ```
-2. A janela do **Interview Copilot** aparecerá de forma translúcida na tela.
+2. A janela do **Interview Assistant** aparecerá de forma translúcida na tela.
 3. No topo da interface, selecione a fonte de áudio:
    - **🎙️ Microphone**: Se quiser testar apenas a sua voz.
    - **🖥️ System Audio**: Se quiser capturar a voz do entrevistador no Zoom/Teams/Meet.
