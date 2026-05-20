@@ -108,12 +108,15 @@ pip install -r requirements.txt
 2. Abra o arquivo `.env` gerado e preencha as chaves com os seus dados reais:
    - `DEEPGRAM_API_KEY`: Necessária para a transcrição em tempo real.
    - `GROQ_API_KEY` / `CEREBRAS_API_KEY` / `GOOGLE_API_KEY` (Gemini) / `OPENROUTER_API_KEY`: Chaves dos provedores de LLM que fornecem os roteiros de fala.
-   - `CLOUDFLARE_ACCOUNT_ID` & `CLOUDFLARE_API_TOKEN`: Utilizados caso queira habilitar o corretor técnico de termos da Cloudflare.
+    - `CLOUDFLARE_ACCOUNT_ID` & `CLOUDFLARE_API_TOKEN`: Utilizados caso queira habilitar o corretor técnico de termos da Cloudflare.
 
 > [!WARNING]  
 > Nunca adicione chaves reais ao arquivo `.env.example` e nunca envie o arquivo `.env` para repositórios públicos do GitHub. O arquivo `.env` já está protegido no `.gitignore` deste repositório.
 
-### 4. Validar as Chaves de API
+### 4. Guia Detalhado das APIs e Custos
+Para instruções passo a passo de como criar suas contas nas plataformas de IA (Deepgram, Groq, Cerebras, Gemini, Cloudflare, OpenRouter), obter chaves gratuitas, entender os limites e ver cenários práticos de uso, consulte o [Guia de APIs](API_GUIDE.md).
+
+### 5. Validar as Chaves de API
 Antes de rodar a aplicação completa, você pode verificar se as chaves configuradas estão válidas e prontas usando o script validador:
 ```powershell
 python validate_keys.py
