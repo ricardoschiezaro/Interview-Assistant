@@ -109,3 +109,43 @@ Imagine o seguinte fluxo durante uma entrevista de emprego de qualquer área (ex
    *   *«Bem, em situações de estouro, eu primeiro aplico uma análise de valor agregado (EVM) para mapear o desvio real de custo e prazo.»*
    *   *«Na minha experiência anterior, quando lidamos com um desvio no projeto X, reuni os stakeholders, apresentei um plano de compressão (crashing) e renegociamos o escopo de menor valor.»*
 8. **O Resultado:** Menos de **1.5 segundos** se passaram desde que o entrevistador terminou de falar. Você lê os tópicos na tela e responde com naturalidade, segurança e autoridade profissional técnica.
+
+---
+
+## 💰 5. Camadas Gratuitas e Custos Estimados (Free Tier vs. Paid)
+
+A maioria dos serviços integrados no **Interview Copilot** oferece camadas gratuitas extremamente generosas, permitindo que você utilize o aplicativo para testes e dezenas de entrevistas reais **sem gastar absolutamente nada**.
+
+Abaixo estão os detalhes de custos e limites de cada plataforma:
+
+### 🎙️ Deepgram (Transcrição - STT)
+*   **Camada Gratuita:** Dá **$20 de créditos gratuitos** ao se cadastrar. Esses créditos não expiram rapidamente e equivalem a aproximadamente **45 horas** de transcrição de áudio pré-gravado ou **33 horas** de streaming em tempo real com o modelo de alta performance **Nova-2**.
+*   **Após acabar a camada gratuita (Pay-as-you-go):** 
+    *   Modelo **Nova-2 (Recomendado):** $0.0043 por minuto de áudio (~$0.26 por hora).
+    *   *Exemplo de custo:* Se você fizer 10 horas de entrevista no mês, o custo total será de aproximadamente **$2.60 USD**.
+
+### ⚡ Groq (LLM Rápida)
+*   **Camada Gratuita:** **100% gratuita no plano básico** (com limites de taxa - Rate Limits). Os limites são baseados em Requisições por Minuto (RPM) e Tokens por Minuto (TPM). Para o uso no Copilot, a camada gratuita atende perfeitamente se você não ultrapassar cerca de 14.400 requisições diárias.
+*   **Após ultrapassar os limites ou para planos pagos:**
+    *   Modelo `Llama-3.3-70b-versatile`: $0.59 por 1 milhão de tokens de entrada / $0.79 por 1 milhão de tokens de saída.
+    *   *Exemplo de custo:* 1 milhão de tokens equivale a mais de 750 mil palavras. O custo é de centavos de dólar.
+
+### 🧠 Cerebras (LLM Rápida)
+*   **Camada Gratuita:** Atualmente em **Developer Beta gratuito**. Oferece chaves sem custos com limites de taxa generosos (ex: 30 requisições por minuto).
+*   **Após a fase Beta:** Espera-se preços muito baixos (estimados entre $0.10 e $0.60 por 1 milhão de tokens).
+
+###  Gemini (Google AI Studio)
+*   **Camada Gratuita:** Muito robusta e gratuita para desenvolvedores.
+    *   Modelo `Gemini-2.5-Flash`: **15 requisições por minuto (RPM)**, 1 milhão de tokens por minuto (TPM) e 1.500 requisições por dia (RPD). Isso é mais do que suficiente para qualquer entrevista real.
+*   **Após ultrapassar a camada gratuita (Pay-as-you-go):**
+    *   Modelo `Gemini-2.5-Flash`: $0.075 por 1 milhão de tokens de entrada / $0.30 por 1 milhão de tokens de saída. É um dos modelos mais baratos do mundo.
+
+### ☁️ Cloudflare Workers AI (Sanitizer)
+*   **Camada Gratuita:** **10.000 "Neurons" gratuitos por dia**. No modelo padrão usado para correção ortográfica rápida (como Llama-3-8b), isso é equivalente a cerca de **10.000 a 20.000 tokens gerados por dia**, ideal para cobrir todas as falas de uma entrevista de 1 a 2 horas diárias.
+*   **Após acabar a cota diária:**
+    *   Custos adicionais cobrados por Neurons consumidos (cerca de $0.011 USD para cada 1.000 Neurons adicionais).
+
+### 🌐 OpenRouter (Hub Multimodelo)
+*   **Modelos Gratuitos:** Oferece acesso a diversos modelos open-source **totalmente grátis** (como `Llama 3 8B Instruct free` ou `Mistral 7B Instruct free`).
+*   **Modelos Pagos:** Pré-pago (carregue o saldo com valores a partir de $5 USD). A cobrança é feita pelo custo exato de cada token definido pelo modelo escolhido (geralmente na faixa de $0.07 a $0.80 por milhão de tokens).
+
