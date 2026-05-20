@@ -1,0 +1,17 @@
+# Environment variables (Crucial!)
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs and scratchpad files
+*.log
+scratch/
