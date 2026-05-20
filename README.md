@@ -4,9 +4,6 @@ O **Interview Copilot** é um assistente virtual inteligente e silencioso de có
 
 Ele roda localmente em uma janela translúcida com estilo *glassmorphism* (sem bordas e sempre no topo), captura o áudio do entrevistador e do candidato, transcreve a conversa em tempo real e fornece sugestões de fala personalizadas baseadas no currículo (CV) do candidato e na descrição da vaga (Job Description).
 
-> [!IMPORTANT]  
-> **Quer começar rapidamente e sem custos?** Consulte o nosso **[Guia Detalhado de APIs e Custos (API Guide)](API_GUIDE.md)** para aprender como criar suas contas e chaves de forma gratuita nas plataformas integradas (Deepgram, Groq, Cerebras, Gemini, Cloudflare, OpenRouter), entender o mecanismo de failover dinâmico e conferir um cenário real de uso.
-
 ---
 
 ## 🎯 Objetivo do Projeto
@@ -108,23 +105,138 @@ pip install -r requirements.txt
    ```powershell
    copy .env.example .env
    ```
-2. Abra o arquivo `.env` gerado e preencha as chaves com os seus dados reais:
-   - `DEEPGRAM_API_KEY`: Necessária para a transcrição em tempo real.
-   - `GROQ_API_KEY` / `CEREBRAS_API_KEY` / `GOOGLE_API_KEY` (Gemini) / `OPENROUTER_API_KEY`: Chaves dos provedores de LLM que fornecem os roteiros de fala.
-    - `CLOUDFLARE_ACCOUNT_ID` & `CLOUDFLARE_API_TOKEN`: Utilizados caso queira habilitar o corretor técnico de termos da Cloudflare.
+2. Abra o arquivo `.env` gerado e preencha as chaves com os seus dados reais. Veja abaixo como criar cada uma delas gratuitamente.
 
 > [!WARNING]  
 > Nunca adicione chaves reais ao arquivo `.env.example` e nunca envie o arquivo `.env` para repositórios públicos do GitHub. O arquivo `.env` já está protegido no `.gitignore` deste repositório.
 
-### 4. Guia Detalhado das APIs e Custos
-Para instruções passo a passo de como criar suas contas nas plataformas de IA (Deepgram, Groq, Cerebras, Gemini, Cloudflare, OpenRouter), obter chaves gratuitas, entender os limites e ver cenários práticos de uso, consulte o [Guia de APIs](API_GUIDE.md).
-
-### 5. Validar as Chaves de API
+### 4. Validar as Chaves de API
 Antes de rodar a aplicação completa, você pode verificar se as chaves configuradas estão válidas e prontas usando o script validador:
 ```powershell
 python validate_keys.py
 ```
 O script testará a comunicação e latência com os provedores configurados.
+
+---
+
+## 🔑 Guia de APIs: Como Criar, Benefícios e Custos
+
+A maioria dos serviços integrados no **Interview Copilot** oferece camadas gratuitas extremamente generosas. Você pode usar o aplicativo para testes e dezenas de entrevistas reais **sem gastar absolutamente nada**.
+
+### 🎙️ Deepgram — Transcrição de Áudio em Tempo Real (STT)
+
+*   **O que faz:** Transcreve a fala do microfone ou do áudio do computador em tempo real com baixíssima latência.
+*   **Camada Gratuita:** **$20 de créditos gratuitos** ao cadastrar (~**33 horas** de streaming em tempo real com o modelo Nova-2).
+*   **Custo pós-gratuito:** ~$0.0043/minuto (~$0.26/hora). 10 horas de entrevista no mês = **~$2.60 USD**.
+*   **Como criar a chave:**
+    1. Acesse [console.deepgram.com](https://console.deepgram.com/) e crie uma conta gratuita.
+    2. No menu esquerdo, vá em **API Keys** → **Create a New API Key**.
+    3. Dê um nome (ex: `InterviewCopilot`) e selecione permissão `Member`.
+    4. Copie a chave e cole em `DEEPGRAM_API_KEY` no seu `.env`.
+
+---
+
+### ⚡ Groq — LLM Ultrarrápido (Provedor Principal)
+
+*   **O que faz:** Gera as respostas do copiloto com latência de ~150–300ms usando hardware LPU dedicado.
+*   **Camada Gratuita:** **100% gratuita** no plano básico (com Rate Limits por minuto — suficiente para todas as entrevistas).
+*   **Custo pós-gratuito:** ~$0.59 por 1 milhão de tokens de entrada / ~$0.79 por 1 milhão de tokens de saída (centavos de dólar por entrevista).
+*   **Como criar a chave:**
+    1. Acesse [console.groq.com](https://console.groq.com/) e crie uma conta.
+    2. Vá para a aba **API Keys** → **Create API Key**.
+    3. Copie a chave (começa com `gsk_`) e cole em `GROQ_API_KEY` no seu `.env`.
+
+---
+
+### 🧠 Cerebras — LLM de Altíssima Velocidade (Failover)
+
+*   **O que faz:** Inferência baseada em hardware CS-3 com a maior taxa de geração de tokens/segundo do mercado. Serve de fallback automático quando a Groq está lenta.
+*   **Camada Gratuita:** **100% gratuita** na fase atual de Developer Beta (30 requisições/minuto).
+*   **Custo pós-Beta:** Estimado entre $0.10–$0.60 por 1 milhão de tokens.
+*   **Como criar a chave:**
+    1. Acesse [cloud.cerebras.ai](https://cloud.cerebras.ai/) e cadastre-se.
+    2. Vá em **API Keys** no menu de desenvolvimento → crie a chave (começa com `csk-`).
+    3. Cole em `CEREBRAS_API_KEY` no seu `.env`.
+
+---
+
+### ♊ Google Gemini — Raciocínio e Contexto Longo (Failover)
+
+*   **O que faz:** Excelente compreensão semântica e suporte a janelas de contexto gigantescas para cruzar seu currículo com perguntas difíceis.
+*   **Camada Gratuita:** **15 RPM e 1.500 requisições/dia** com o modelo `Gemini-2.5-Flash` — mais do que suficiente para qualquer entrevista.
+*   **Custo pós-gratuito:** $0.075 por 1 milhão de tokens de entrada / $0.30 de saída — um dos modelos mais baratos do mundo.
+*   **Como criar a chave:**
+    1. Acesse [aistudio.google.com](https://aistudio.google.com/) e faça login com sua conta Google.
+    2. Clique em **Get API Key** → **Create API Key** (escolha um projeto ou crie um novo).
+    3. Cole a chave gerada em `GOOGLE_API_KEY` no seu `.env`.
+
+---
+
+### ☁️ Cloudflare Workers AI — Sanitizer / Corretor de Texto (Edge)
+
+*   **O que faz:** Roda modelos leves na borda da rede Cloudflare para corrigir erros de transcrição e formatar jargões de sua área de atuação antes de enviar à LLM principal.
+*   **Camada Gratuita:** **10.000 "Neurons" por dia** (~10.000–20.000 tokens gerados/dia, o suficiente para 1–2 horas diárias de entrevista).
+*   **Custo pós-gratuito:** ~$0.011 USD por 1.000 Neurons adicionais.
+*   **Como criar a chave:**
+    1. Faça login em [dash.cloudflare.com](https://dash.cloudflare.com/).
+    2. Seu **Account ID** está no painel lateral direito na tela inicial.
+    3. Vá em **My Profile** (canto superior direito) → **API Tokens** → **Create Token** usando o template **Workers AI (Beta)**.
+    4. Salve o Account ID em `CLOUDFLARE_ACCOUNT_ID` e o token em `CLOUDFLARE_API_TOKEN`.
+
+---
+
+### 🌐 OpenRouter — Hub Multimodelo (Failover Opcional)
+
+*   **O que faz:** Dá acesso a centenas de modelos (Llama, Claude, Mistral) com uma única chave e faturamento unificado.
+*   **Camada Gratuita:** Acesso a modelos open-source **totalmente grátis** (ex: `Llama 3 8B Instruct free`, `Mistral 7B Instruct free`).
+*   **Custo pós-gratuito:** Pré-pago a partir de $5 USD, cobrado pelo token do modelo escolhido ($0.07–$0.80 por milhão de tokens).
+*   **Como criar a chave:**
+    1. Acesse [openrouter.ai](https://openrouter.ai/) e crie uma conta.
+    2. Vá nas configurações de perfil → **Keys** → **Create Key**.
+    3. Cole em `OPENROUTER_API_KEY` no seu `.env`.
+
+---
+
+## 📊 Resumo de Benefícios e Latências
+
+| Plataforma | Papel no Sistema | Latência Média | Camada Gratuita |
+| :--- | :--- | :--- | :--- |
+| **Deepgram** | Transcrição (STT) | < 300ms | $20 créditos (~33h de stream) |
+| **Groq** | LLM Principal | ~150–300ms | Gratuita (Rate Limits) |
+| **Cerebras** | LLM Failover | ~100–250ms | Gratuita (Beta) |
+| **Google Gemini** | LLM Failover | ~600ms–1s | 1.500 req/dia grátis |
+| **Cloudflare** | Sanitizer/Corretor | ~200–400ms | 10.000 Neurons/dia grátis |
+| **OpenRouter** | Hub Multimodelo | Variável | Modelos grátis disponíveis |
+
+---
+
+## 🔄 Como Funciona o Failover Automático de APIs
+
+O **Interview Copilot** garante que você **nunca** fique sem resposta durante uma entrevista, mesmo que uma API falhe ou fique lenta:
+
+1. **Tentativa Principal:** O sistema dispara a pergunta para o provedor principal (ex: Groq).
+2. **Timeout de 800ms:** Um cronômetro interno aguarda a resposta por no máximo **800 milissegundos**.
+3. **Failover Instantâneo:** Se a API principal ultrapassar o limite (instabilidade, lentidão ou Rate Limit), a requisição é cancelada e o sistema consulta imediatamente o provedor secundário (ex: Cerebras ou Gemini).
+4. **Transparência Total:** Você não percebe nenhuma queda — a resposta aparece na tela em menos de **1.5 segundos** no total.
+
+> [!TIP]  
+> Quanto mais chaves de API você configurar no `.env`, mais robusto e resiliente será o sistema de failover!
+
+---
+
+## 🎬 Cenário de Uso Prático
+
+Veja como o fluxo funciona em uma entrevista real:
+
+1. **A Pergunta:** O entrevistador pergunta via Zoom:
+   > *"Como você lida com projetos atrasados e com orçamento estourado?"*
+2. **Captura:** O áudio sai nas caixas de som e é capturado pelo driver WASAPI (modo `System Audio`).
+3. **Transcrição (Deepgram):** Em **~250ms**, a fala vira texto na sua tela.
+4. **Sanitização (Cloudflare):** Em **~200ms**, o corretor formata o texto e ajusta jargões da sua área.
+5. **Consulta à LLM (Groq):** O texto + seu currículo são enviados ao Groq. A rede oscila e atinge o limite de 800ms sem resposta.
+6. **Failover (Cerebras):** O sistema rotaciona automaticamente para o Cerebras. Em **~350ms** a resposta é gerada.
+7. **Exibição:** Na aba **Copilot**, você vê os tópicos de resposta baseados no seu histórico real.
+8. **Resultado:** Menos de **1.5 segundos** após o entrevistador parar de falar, você já tem o roteiro na tela e pode responder com naturalidade e autoridade.
 
 ---
 
